@@ -1,0 +1,35 @@
+<%= form_with(model: schedule, local: true, class: "form-card") do |f| %>
+  <% if schedule.errors.any? %>
+    <div class="errors"><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</div>
+    <ul><% schedule.errors.full_messages.each { |m| %><li><%= m %></li><% } %></ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :all_day, "All day" %>
+    <%= f.check_box :all_day, id: "all_day" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :start_at, "Start" %>
+    <%= f.datetime_local_field :start_at, id: "start_at" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_at, "End" %>
+    <%= f.datetime_local_field :end_at, id: "end_at" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :memo, "Memo" %>
+    <%= f.text_area :memo, rows: 4 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create Schedule', class: "btn-primary", data: { disable_with: 'Saving...' } %>
+  </div>
+<% end %>

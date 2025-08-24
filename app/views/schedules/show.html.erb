@@ -1,0 +1,12 @@
+<p class="notice"><%= notice %></p>
+
+<h1>予定詳細</h1>
+
+<p><strong>タイトル:</strong> <%= @schedule.title %></p>
+<p><strong>開始:</strong> <%= date_by_all_day(@schedule.start_at, @schedule.all_day) %></p>
+<p><strong>終了:</strong> <%= date_by_all_day(@schedule.end_at,   @schedule.all_day) %></p>
+<p><strong>終日:</strong> <%= maru(@schedule.all_day) %></p>
+<p><strong>メモ:</strong><br><%= simple_format(@schedule.memo) %></p>
+
+<%= link_to '一覧に戻る', schedules_path %> |
+<%= link_to '編集', edit_schedule_path(@schedule) %>
